@@ -3,8 +3,15 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import logger from "./logger.js";
 import morgan from "morgan";
+import path from "path";
+import dotenv from "dotenv";
+
+dotenv.config({
+  path: "./.env",
+});
 
 const app = express();
+const __dirname = path.resolve();
 const morganFormat = ":method :url :status :response-time ms";
 
 // app.use(
@@ -65,5 +72,18 @@ app.use((err, req, res, next) => {
     ...(process.env.NODE_ENV === "development" && { stack: err.stack }),
   });
 });
+
+// make ready for deployment
+console.log(process.env.NODE_ENV);
+if (process.env.NODE_ENV === "production") {
+  const frontendPath = path.join(__dirname, "../frontend/dist");
+
+  app.use(express.static(frontendPath));
+
+  // ✅ Express v5 compatible catch-all (regex)
+  app.get(/.*/, (_, res) => {
+    res.sendFile(path.join(frontendPath, "index.html"));
+  });
+}
 
 export { app };
