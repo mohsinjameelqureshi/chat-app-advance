@@ -1,6 +1,8 @@
+# Enable CodeRabbit auto-reviews on all branches
 reviews:
-  auto_review: true # Automatically review all pull requests
-  review_status: false # Disable that 'Review skipped' message
+  auto_review:
+    enabled: true # ✅ must be an object now
+  review_status: false # hide “Review skipped” message
   branches:
     include:
-      - "*" # Apply to all branches (not just main)
+      - "*" # review all branches
