@@ -1,0 +1,8 @@
+# Enable CodeRabbit auto-reviews on all branches
+reviews:
+  auto_review:
+    enabled: true # ✅ must be an object now
+  review_status: false # hide “Review skipped” message
+  branches:
+    include:
+      - "*" # review all branches
