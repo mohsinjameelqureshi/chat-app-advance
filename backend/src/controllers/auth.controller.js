@@ -30,7 +30,10 @@ const generateAccessAndRefreshToken = async (userId) => {
 };
 
 const signup = asyncHandler(async (req, res) => {
-  const { fullname, email, password } = req.body;
+  let { fullname = "", email = "", password = "" } = req.body;
+  fullname = fullname.trim();
+  email = email.trim().toLowerCase();
+  password = password.trim();
 
   // validation
   if (
@@ -85,9 +88,7 @@ const signup = asyncHandler(async (req, res) => {
       .status(201)
       .cookie("accessToken", accessToken, OPTIONS)
       .cookie("refreshToken", refreshToken, OPTIONS)
-      .json(
-        new ApiResponse(201, { user: createdUser, accessToken }, "success")
-      );
+      .json(new ApiResponse(201, { user: createdUser }, "success"));
   } catch (error) {
     console.error("Error while signup", error.message);
     throw new ApiError(500, "Something went wrong while signup");
