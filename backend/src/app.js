@@ -5,6 +5,7 @@ import logger from "./logger.js";
 import morgan from "morgan";
 import path from "path";
 import dotenv from "dotenv";
+import { ApiError } from "./utils/apiError.js";
 
 dotenv.config({
   path: "./.env",
@@ -49,10 +50,12 @@ import healthRoute from "./routes/healthcheck.route.js";
 import authRoutes from "./routes/auth.route.js";
 
 // routes
+
 // healthCheck
 app.use("/api/healthcheck", healthRoute);
+
+// auth
 app.use("/api/auth", authRoutes);
-// app.use("/api/v1/healthcheck", healthCheckRouter);
 
 // global error handler
 app.use((err, req, res, next) => {
@@ -74,7 +77,6 @@ app.use((err, req, res, next) => {
 });
 
 // make ready for deployment
-console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV === "production") {
   const frontendPath = path.join(__dirname, "../frontend/dist");
 
