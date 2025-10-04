@@ -1,0 +1,6 @@
+reviews:
+  auto_review: true # Automatically review all pull requests
+  review_status: false # Disable that 'Review skipped' message
+  branches:
+    include:
+      - "*" # Apply to all branches (not just main)
