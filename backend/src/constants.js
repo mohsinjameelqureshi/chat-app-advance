@@ -1,4 +1,4 @@
-export const DB_NAME = "vidtube";
+export const DB_NAME = "chatify";
 
 export const OPTIONS = {
   htppOnly: true,
