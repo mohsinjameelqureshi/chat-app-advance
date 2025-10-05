@@ -117,14 +117,8 @@ const login = asyncHandler(async (req, res) => {
   // check if user exists
   const user = await User.findOne({ email });
 
-  if (!user) {
-    throw new ApiError(404, "User didn't exist");
-  }
-
-  // validate password
-  const isPasswordValid = await user.isPasswordCorrect(password);
-  if (!isPasswordValid) {
-    throw new ApiError(401, "Invalid Password");
+  if (!user || !(await user.isPasswordCorrect(password))) {
+    throw new ApiError(401, "Invalid credentials");
   }
 
   const { accessToken, refreshToken } = await generateAccessAndRefreshToken(
