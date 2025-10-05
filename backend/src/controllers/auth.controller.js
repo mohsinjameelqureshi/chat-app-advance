@@ -130,7 +130,7 @@ const login = asyncHandler(async (req, res) => {
   );
 
   if (!loggedInUser) {
-    throw new ApiError(400, "Error while logging in user");
+    throw new ApiError(500, "Error while logging in user");
   }
 
   res
