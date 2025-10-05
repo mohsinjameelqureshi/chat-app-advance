@@ -4,12 +4,8 @@ import cookieParser from "cookie-parser";
 import logger from "./logger.js";
 import morgan from "morgan";
 import path from "path";
-import dotenv from "dotenv";
 import { ApiError } from "./utils/apiError.js";
-
-dotenv.config({
-  path: "./.env",
-});
+import { ENV } from "./utils/env.js";
 
 const app = express();
 const __dirname = path.resolve();
@@ -66,18 +62,18 @@ app.use((err, req, res, next) => {
       message: err.message,
       errors: err.errors,
       data: err.data,
-      ...(process.env.NODE_ENV === "development" && { stack: err.stack }),
+      ...(ENV.NODE_ENV === "development" && { stack: err.stack }),
     });
   }
   res.status(500).json({
     success: false,
     message: "Internal Server Error",
-    ...(process.env.NODE_ENV === "development" && { stack: err.stack }),
+    ...(ENV.NODE_ENV === "development" && { stack: err.stack }),
   });
 });
 
 // make ready for deployment
-if (process.env.NODE_ENV === "production") {
+if (ENV.NODE_ENV === "production") {
   const frontendPath = path.join(__dirname, "../frontend/dist");
 
   app.use(express.static(frontendPath));

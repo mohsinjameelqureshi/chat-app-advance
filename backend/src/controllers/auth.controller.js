@@ -1,8 +1,10 @@
 import { OPTIONS } from "../constants.js";
+import { sendWelcomeEmail } from "../emails/emailHandlers.js";
 import { User } from "../models/user.model.js";
 import { ApiError } from "../utils/apiError.js";
 import { ApiResponse } from "../utils/apiResponse.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
+import { ENV } from "../utils/env.js";
 
 const generateAccessAndRefreshToken = async (userId) => {
   try {
@@ -89,6 +91,13 @@ const signup = asyncHandler(async (req, res) => {
       .cookie("accessToken", accessToken, OPTIONS)
       .cookie("refreshToken", refreshToken, OPTIONS)
       .json(new ApiResponse(201, { user: createdUser }, "success"));
+
+    // optimized way to send welcome mail
+    sendWelcomeEmail(createdUser?.email, createdUser?.fullname, ENV.CLIENT_URL)
+      .then(() => console.log(`Welcome email sent to ${createdUser.email}`))
+      .catch((err) =>
+        console.error("Failed to send welcome email:", err.message)
+      );
   } catch (error) {
     console.error("Error while signup", error.message);
     throw new ApiError(500, "Something went wrong while signup");
