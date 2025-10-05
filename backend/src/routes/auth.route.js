@@ -20,7 +20,7 @@ router.route("/logout").post(verifyJWT, logout);
 
 router
   .route("/update-profile")
-  .put(upload.single("profilePic"), verifyJWT, updateProfile);
+  .put(verifyJWT, upload.single("profilePic"), updateProfile);
 
 router
   .route("/check")
