@@ -4,6 +4,10 @@ import { User } from "../models/user.model.js";
 import { ApiError } from "../utils/apiError.js";
 import { ApiResponse } from "../utils/apiResponse.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
+import {
+  deleteFromCloudinary,
+  uploadOnCloudinary,
+} from "../utils/cloudinary.js";
 import { ENV } from "../utils/env.js";
 
 const generateAccessAndRefreshToken = async (userId) => {
@@ -164,4 +168,45 @@ const logout = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, {}, "User logout successfully"));
 });
 
-export { signup, login, logout };
+const updateProfile = asyncHandler(async (req, res) => {
+  const userId = req.user?._id;
+  const profilePicPath = req.file?.path;
+
+  if (!profilePicPath) {
+    throw new ApiError(400, "File is required");
+  }
+
+  let profilePic;
+  try {
+    profilePic = await uploadOnCloudinary(profilePicPath);
+    if (!profilePic.url) {
+      throw new ApiError(
+        500,
+        "Something went wrong while uploading profile picture"
+      );
+    }
+
+    const user = await User.findByIdAndUpdate(
+      userId,
+      {
+        $set: {
+          profilePic: profilePic.url,
+        },
+      },
+      { new: true }
+    ).select("-password -refreshToken");
+
+    return res
+      .status(200)
+      .json(new ApiResponse(200, user, "Profile picture updated successfully"));
+  } catch (error) {
+    if (profilePic) {
+      await deleteFromCloudinary(
+        profilePic.public_id,
+        profilePic.resource_type
+      );
+    }
+  }
+});
+
+export { signup, login, logout, updateProfile };
