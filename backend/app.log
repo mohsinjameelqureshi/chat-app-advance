@@ -7,3 +7,7 @@
 {"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"POST\",\"url\":\"/api/auth/signup\",\"status\":\"201\",\"responseTime\":\"608.633\"}","timestamp":"2025-10-05T11:39:45.159Z"}
 {"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"POST\",\"url\":\"/api/auth/signup\",\"status\":\"201\",\"responseTime\":\"516.882\"}","timestamp":"2025-10-05T11:57:08.593Z"}
 {"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"POST\",\"url\":\"/api/auth/signup\",\"status\":\"201\",\"responseTime\":\"855.087\"}","timestamp":"2025-10-05T12:03:56.907Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"POST\",\"url\":\"/api/auth/signup\",\"status\":\"201\",\"responseTime\":\"608.381\"}","timestamp":"2025-10-05T15:59:12.827Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"POST\",\"url\":\"/api/auth/login\",\"status\":\"401\",\"responseTime\":\"209.913\"}","timestamp":"2025-10-05T15:59:56.685Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"POST\",\"url\":\"/api/auth/login\",\"status\":\"404\",\"responseTime\":\"174.504\"}","timestamp":"2025-10-05T16:00:05.706Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"POST\",\"url\":\"/api/auth/login\",\"status\":\"200\",\"responseTime\":\"490.579\"}","timestamp":"2025-10-05T16:00:24.429Z"}
