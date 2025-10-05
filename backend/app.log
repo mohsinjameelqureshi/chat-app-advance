@@ -11,3 +11,4 @@
 {"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"POST\",\"url\":\"/api/auth/login\",\"status\":\"401\",\"responseTime\":\"209.913\"}","timestamp":"2025-10-05T15:59:56.685Z"}
 {"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"POST\",\"url\":\"/api/auth/login\",\"status\":\"404\",\"responseTime\":\"174.504\"}","timestamp":"2025-10-05T16:00:05.706Z"}
 {"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"POST\",\"url\":\"/api/auth/login\",\"status\":\"200\",\"responseTime\":\"490.579\"}","timestamp":"2025-10-05T16:00:24.429Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"POST\",\"url\":\"/api/auth/logout\",\"status\":\"200\",\"responseTime\":\"200.635\"}","timestamp":"2025-10-05T16:27:17.332Z"}
