@@ -7,8 +7,10 @@ import {
 } from "../controllers/auth.controller.js";
 import { verifyJWT } from "../middleware/auth.middleware.js";
 import { upload } from "../middleware/multer.middleware.js";
+import { arcjetProtection } from "../middleware/arcjet.middleware.js";
 
 const router = Router();
+router.use(arcjetProtection);
 
 router.route("/signup").post(signup);
 
