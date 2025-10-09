@@ -55,7 +55,8 @@ const getMessagesByUserId = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, message, "Chat between both users"));
 });
 const sendMessage = asyncHandler(async (req, res) => {
-  const { text, image } = req.body;
+  const { text } = req.body;
+  const image = req.file?.path;
   const { id: receiverId } = req.params;
   const senderId = req.user?._id;
 
