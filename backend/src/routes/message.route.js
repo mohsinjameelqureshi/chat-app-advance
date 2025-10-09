@@ -18,6 +18,6 @@ router.route("/chats").get(getChatPartners);
 
 router.route("/:id").get(getMessagesByUserId);
 
-router.route("/send/:id").post(sendMessage);
+router.route("/send/:id").post(upload.single("image"), sendMessage);
 
 export default router;
