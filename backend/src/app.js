@@ -44,6 +44,7 @@ app.use(
 // import routes
 import healthRoute from "./routes/healthcheck.route.js";
 import authRoutes from "./routes/auth.route.js";
+import messageRoutes from "./routes/message.route.js";
 
 // routes
 
@@ -52,6 +53,9 @@ app.use("/api/healthcheck", healthRoute);
 
 // auth
 app.use("/api/auth", authRoutes);
+
+// message
+app.use("/api/message", messageRoutes);
 
 // global error handler
 app.use((err, req, res, next) => {

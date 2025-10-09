@@ -10,7 +10,7 @@ import { upload } from "../middleware/multer.middleware.js";
 import { arcjetProtection } from "../middleware/arcjet.middleware.js";
 
 const router = Router();
-router.use(arcjetProtection);
+// router.use(arcjetProtection);
 
 router.route("/signup").post(signup);
 
