@@ -17,11 +17,11 @@ function SignUpPage() {
     password: "",
   });
 
-  const { singup, isSigningUp } = useAuthStore();
+  const { signup, isSigningUp } = useAuthStore();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    singup(formData);
+    signup(formData);
   };
   return (
     <div className="w-full flex items-center justify-center p-4 bg-slate-900">

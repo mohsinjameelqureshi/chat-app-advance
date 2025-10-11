@@ -316,3 +316,6 @@
 {"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"GET\",\"url\":\"/api/auth/check\",\"status\":\"401\",\"responseTime\":\"52.553\"}","timestamp":"2025-10-11T22:06:12.118Z"}
 {"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"GET\",\"url\":\"/api/auth/check\",\"status\":\"401\",\"responseTime\":\"13.087\"}","timestamp":"2025-10-11T22:06:38.932Z"}
 {"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"GET\",\"url\":\"/api/auth/check\",\"status\":\"401\",\"responseTime\":\"11.043\"}","timestamp":"2025-10-11T22:06:38.947Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"GET\",\"url\":\"/api/auth/check\",\"status\":\"401\",\"responseTime\":\"9.037\"}","timestamp":"2025-10-11T22:29:03.985Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"GET\",\"url\":\"/api/auth/check\",\"status\":\"401\",\"responseTime\":\"20.916\"}","timestamp":"2025-10-11T22:29:58.802Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"GET\",\"url\":\"/api/auth/check\",\"status\":\"401\",\"responseTime\":\"14.970\"}","timestamp":"2025-10-11T22:29:58.825Z"}
