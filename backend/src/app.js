@@ -1,5 +1,5 @@
 import express from "express";
-// import cors from "cors";
+import cors from "cors";
 import cookieParser from "cookie-parser";
 import logger from "./logger.js";
 import morgan from "morgan";
@@ -11,12 +11,12 @@ const app = express();
 const __dirname = path.resolve();
 const morganFormat = ":method :url :status :response-time ms";
 
-// app.use(
-//   cors({
-//     origin: process.env.CORS_ORIGIN,
-//     credentials: true,
-//   })
-// );
+app.use(
+  cors({
+    origin: ENV.CLIENT_URL,
+    credentials: true,
+  })
+);
 
 //common middleware
 app.use(express.json({ limit: "16kb" }));
