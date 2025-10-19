@@ -47,13 +47,18 @@ const getMessagesByUserId = asyncHandler(async (req, res) => {
   });
 
   if (message.length === 0) {
-    throw new ApiError(404, "No messages found between these users.");
+    res
+      .status(200)
+      .json(
+        new ApiResponse(200, message, "No chat happened between both users")
+      );
   }
 
   res
     .status(200)
     .json(new ApiResponse(200, message, "Chat between both users"));
 });
+
 const sendMessage = asyncHandler(async (req, res) => {
   const { text } = req.body;
   const image = req.file?.path;
