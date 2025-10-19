@@ -4,7 +4,7 @@ import { useAuthStore } from "../store/useAuthStore.js";
 import ChatHeader from "./ChatHeader.jsx";
 import NoChatHistoryPlaceholder from "./NoChatHistoryPlaceholder.jsx";
 import MessageInput from "./MessageInput.jsx";
-import MessageLoadingSkelton from "./MessageLoadingSkelton.jsx";
+import MessagesLoadingSkeleton from "./MessagesLoadingSkeleton.jsx";
 
 function ChatContainer() {
   const { messages, selectedUser, getMessagesByUserId, isMessagesLoading } =
@@ -57,7 +57,7 @@ function ChatContainer() {
             ))}
           </div>
         ) : isMessagesLoading ? (
-          <MessageLoadingSkelton />
+          <MessagesLoadingSkeleton />
         ) : (
           <NoChatHistoryPlaceholder name={selectedUser.fullname} />
         )}
