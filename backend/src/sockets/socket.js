@@ -18,7 +18,7 @@ const io = new Server(server, {
 io.use(socketAuthMiddleware);
 
 // this is storing online user
-const userSocketMap = {}; // {userId:socketId}
+const userSocketMap = {}; // {userId: Set<socketId>}
 
 io.on("connection", (socket) => {
   console.log("A user connect", socket.user.fullname);
