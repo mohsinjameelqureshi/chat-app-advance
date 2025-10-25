@@ -1,5 +1,5 @@
 import { v2 as cloudinary } from "cloudinary";
-import fs from "fs";
+import streamifier from "streamifier";
 import { ENV } from "./env.js";
 
 // Configuration
@@ -9,33 +9,41 @@ cloudinary.config({
   api_secret: ENV.CLOUDINARY_API_SECRET,
 });
 
-// function to upload on cloudinary
-const uploadOnCloudinary = async (localFilePath) => {
+// Upload from buffer (memoryStorage)
+const uploadOnCloudinary = async (fileBuffer) => {
   try {
-    if (!localFilePath) return null;
-    const response = await cloudinary.uploader.upload(localFilePath, {
-      resource_type: "auto",
+    if (!fileBuffer) return null;
+
+    const result = await new Promise((resolve, reject) => {
+      const stream = cloudinary.uploader.upload_stream(
+        { resource_type: "auto" },
+        (error, result) => {
+          if (error) return reject(error);
+          resolve(result);
+        }
+      );
+
+      streamifier.createReadStream(fileBuffer).pipe(stream);
     });
 
-    console.log("File Uploaded on cludinary. File src: " + response.url);
-    //once the file is uploaded we would like to delete it from our server
-    fs.unlinkSync(localFilePath);
-    return response;
+    console.log("File uploaded on Cloudinary. File src:", result.secure_url);
+    return result;
   } catch (error) {
-    fs.unlinkSync(localFilePath);
+    console.error("Cloudinary upload error:", error);
     return null;
   }
 };
 
-// function to delete file from clodinary
+// Delete file from Cloudinary
 const deleteFromCloudinary = async (publicId, resourceType = "auto") => {
   try {
     const result = await cloudinary.uploader.destroy(publicId, {
       resource_type: resourceType,
     });
-    console.log("Deleting from cloudinary. Public ID", publicId);
+    console.log("Deleted from Cloudinary:", publicId);
+    return result;
   } catch (error) {
-    console.log("Error Deleting from cloudinary", error);
+    console.error("Error deleting from Cloudinary:", error);
     return null;
   }
 };
