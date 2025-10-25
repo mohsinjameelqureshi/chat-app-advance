@@ -62,7 +62,7 @@ const getMessagesByUserId = asyncHandler(async (req, res) => {
 
 const sendMessage = asyncHandler(async (req, res) => {
   const { text } = req.body;
-  const image = req.file?.path;
+  const image = req.file?.buffer;
   const { id: receiverId } = req.params;
   const senderId = req.user?._id;
 

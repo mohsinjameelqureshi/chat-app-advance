@@ -170,7 +170,7 @@ const logout = asyncHandler(async (req, res) => {
 
 const updateProfile = asyncHandler(async (req, res) => {
   const userId = req.user?._id;
-  const profilePicPath = req.file?.path;
+  const profilePicPath = req.file?.buffer;
 
   if (!profilePicPath) {
     throw new ApiError(400, "File is required");
