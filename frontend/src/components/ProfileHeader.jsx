@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useAuthStore } from "../store/useAuthStore.js";
 import { useChatStore } from "../store/useChatStore.js";
 import {
@@ -20,7 +20,7 @@ function ProfileHeader() {
     const file = e.target.files[0];
     if (!file) return;
 
-    // ✅ Show preview instantly
+    // Show preview instantly
     const previewURL = URL.createObjectURL(file);
     setSelectedImg(previewURL);
 
@@ -67,7 +67,7 @@ function ProfileHeader() {
           </div>
           {/* Username & Online text */}
           <div>
-            <h3 className="textslate-200 font-medium text-base max-w-[180px] truncate">
+            <h3 className="text-slate-200 font-medium text-base max-w-[180px] truncate">
               {authUser.fullname}
             </h3>
             <p className="text-slate-400">Online</p>
