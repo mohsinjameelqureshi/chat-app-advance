@@ -1,5 +1,5 @@
-import { app } from "./app.js";
 import connectDB from "./db/index.js";
+import { server } from "./sockets/socket.js";
 import { ENV } from "./utils/env.js";
 
 const PORT = ENV.PORT || 8005;
@@ -10,7 +10,7 @@ const PORT = ENV.PORT || 8005;
 
 connectDB()
   .then(() => {
-    app.listen(PORT, () => {
+    server.listen(PORT, () => {
       console.log("server is running on port: ", PORT);
     });
   })
