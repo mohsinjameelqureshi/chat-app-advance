@@ -69,17 +69,6 @@ This app allows users to send **text and image messages**, see **who’s online*
 
 ---
 
-## 📸 Screenshots (Optional)
-
-You can add screenshots or demo GIFs here to showcase:
-
-- Chat interface
-- Image sending
-- Online status
-- Login/register flow
-
----
-
 ## 🧑‍💻 Author
 
 **Mohsin Jameel**  
