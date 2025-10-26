@@ -12,6 +12,7 @@ import { upload } from "../middleware/multer.middleware.js";
 const router = Router();
 
 // todo implement arcjet protextion here
+router.use(arcjetProtection);
 router.use(verifyJWT);
 
 router.route("/contacts").get(getAllContacts);
